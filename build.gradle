@@ -30,3 +30,13 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+appengine {
+	deploy {
+    	stopPreviousVersion = true
+    	promote = true
+  	}
+  	stage {
+  	   appEngineDirectory = "${project.projectDir}/src/main/appengine"
+  	}
+}
