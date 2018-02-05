@@ -41,4 +41,9 @@ public class HelloWorldController {
     return new ResponseEntity<String>("Greetings from: " + greetingsFrom, HttpStatus.OK);
   }
 
+  @RequestMapping(value = "/insert", method = RequestMethod.GET)
+  public ResponseEntity<Void> insert() {
+    userService.dummyInsert();
+    return new ResponseEntity<>(HttpStatus.OK);
+  }
 }

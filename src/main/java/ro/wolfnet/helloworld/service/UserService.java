@@ -30,4 +30,12 @@ public class UserService {
     return this.userRepository.findAll();
   }
 
+  /**
+   * Dummy insert.
+   */
+  public void dummyInsert() {
+    UserEntity user = new UserEntity("u_" + System.currentTimeMillis(), "test@test.com");
+    this.userRepository.save(user);
+  }
+
 }
