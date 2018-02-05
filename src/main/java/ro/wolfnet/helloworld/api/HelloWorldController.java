@@ -21,6 +21,7 @@ import ro.wolfnet.helloworld.service.UserService;
 @RestController
 public class HelloWorldController {
 
+  /** The user service. */
   @Autowired
   private UserService userService;
 
@@ -31,7 +32,7 @@ public class HelloWorldController {
    */
   @RequestMapping(value = "/test", method = RequestMethod.GET)
   public ResponseEntity<String> test() {
-    String greetingsFrom = "Isti";
+    String greetingsFrom = System.getenv("CLOUD_SQL_DATABASE_NAME");
     List<UserEntity> users = userService.findAll();
     if (users != null) {
       for (UserEntity user : users) {
@@ -41,6 +42,11 @@ public class HelloWorldController {
     return new ResponseEntity<String>("Greetings from: " + greetingsFrom, HttpStatus.OK);
   }
 
+  /**
+   * Insert.
+   *
+   * @return the response entity
+   */
   @RequestMapping(value = "/insert", method = RequestMethod.GET)
   public ResponseEntity<Void> insert() {
     userService.dummyInsert();
